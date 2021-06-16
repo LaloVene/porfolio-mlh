@@ -2,70 +2,72 @@
 
 {% block content %}
 <h2 class="section-title">
-    <i class="fa fa-user"></i>
+    <i class="far fa-address-card"></i>
     About Me
 </h2>
 
 <div class="shortPara">
-    <h1>{{aboutInfo.shortParagraph}}</h1>
+    <p>{{aboutInfo.shortParagraph}}</p>
 </div>
 
 <div class="info">
-    <div class="project-card card">
-        <section>
-            <h2>Education</h2>
+
+    <section class="timeline-card">
+        <h2 class="subtitle">Experience</h2>
+        <div class="timeline">
+            {% for exp in aboutInfo.experience %}
+            <div class="timeline-start"></div>
+            <div class="timeline-element">
+                <h3 class="title">{{exp.jobTitle}}</h3>
+                <p class="date">{{exp.year}}</p>
+                <p class="desc">{{exp.jobDesc}}</p>
+            </div>
+            {% endfor %}
+            <div class="timeline-start timeline-end"></div>
+        </div>
+    </section>
+
+    <br>
+
+    <section class="timeline-card">
+        <h2 class="subtitle">Education</h2>
+        <div class="timeline">
             {% for edu in  aboutInfo.education %}
-            <div>
-                <h3>{{edu.schoolName}}</h3>
-                <p>{{edu.year}}</p>
-            </div>
-            
+                <div class="timeline-start"></div>
+                <div class="timeline-element">
+                    <h3 class="title">{{edu.schoolName}}</h3>
+                    <p class="date">{{edu.year}}</p>
+                    <p class="desc">{{edu.desc}}</p>
+                </div>
             {% endfor %}
+            <div class="timeline-start timeline-end"></div>
+        </div>
+    </section>
+
+    <br>
+
+    <div class="">
+        <section>
+            <h2 class="subtitle">Skills</h2>
+            <ul class="interests">
+                {% for skill in aboutInfo.skill %}
+                <li>{{skill}}</li>
+                {% endfor %}
+            </ul>
         </section>
     </div>
 
     <br>
 
-    <div class="project-card card">
+    <div class="">
         <section>
-            <h2>Interest</h2>
-            {% for int in  aboutInfo.interest %}
-            <div>
-                <p><strong>{{int}}</strong></p>
-            </div>
-            {% endfor %}
+            <h2 class="subtitle">Interests</h2>
+            <ul class="interests">
+                {% for int in  aboutInfo.interest %}
+                    <li>{{int}}</li>
+                {% endfor %}
+            </ul>
         </section>
-    </div>
-
-    <br>
-
-    <div class="project-card card">
-        <section>
-            <h2>Experience</h2>
-    
-            {% for exp in  aboutInfo.experience %}
-            <div>
-                <h3>{{exp.jobTitle}}</h3>
-                <p>{{exp.year}}</p>
-                <p><strong>{{exp.jobDesc}}</strong></p>
-            </div>
-            
-            {% endfor %}
-        </section>
-    </div>
-
-    <br>
-
-    <div class="project-card card">
-        <section>
-            <h2>Skill</h2>
-            {% for skill in  aboutInfo.skill %}
-            <div>
-                <p><strong>{{skill}}</strong></p>
-            </div>
-            {% endfor %}
-        </section>
-    </div>
-    
+    </div>    
 </div>
 {% endblock %}

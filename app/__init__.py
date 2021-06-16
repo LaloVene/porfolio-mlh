@@ -21,31 +21,53 @@ headerInfo = {
 }
 
 aboutInfo = {
-    'shortParagraph': 'Hi! My name is Fellow. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu sapien and lorem fermentum hendrerit quis mattis arcu. Nulla eget efficitur ex. Proin hendrerit ligula quis vehicula interdum.',
+    'shortParagraph': 'Hi! My name is Eduardo Venegas. I am a 3rd year CS student, full time Web Developer and Data Engineer. I love learning new things and playing piano / guitar.',
     'education': [
         {
-            'schoolName': 'MLH 1',
-            'year': '2017 - 2020'
+            'schoolName': 'Bachelor in CS - ITESM',
+            'year': '2019 - Present',
+            'desc': '60 % Tuition scholarship due to academic merit.\n• GPA: 97.27\n• Won first place in the Campus Engineering Expo.\n• Achieved one of the best GPA 3 times.\n• Member of the Algorithm Club school group.',
         },
         {
-            'schoolName': 'MLH 2',
-            'year': '2020 - Present'
+            'schoolName': 'Technologist High School in Automatic Control and Instrumentation - CETI',
+            'year': '2015 - 2019',
+            'desc': 'Thesis Project: Autonomous Tennis Machine.\n• GPA: 93',
         }
     ],
-    'interest': ['Interest 1', 'Interest 2', 'Interest 3'],
+    'interest': [
+        'Learning',
+        'Dancing',
+        'Running',
+        ],
     'experience': [
         {
-            'jobTitle': 'Title 1',
-            'year': '2020',
-            'jobDesc': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu sapien and lorem fermentum hendrerit quis mattis arcu. Nulla eget efficitur ex. Proin hendrerit ligula quis vehicula interdum.'
+            'jobTitle': 'Production Engineering Fellow - MLH Fellowship powered by Facebook and GitHub',
+            'year': 'Jun 2021 - Aug 2021 • 3 mos',
+            'jobDesc': 'Working as Production Engineer, it´s hybrid between software & systems engineering that works across product & infrastructure to make sure services are reliable & scalable.'
         },
         {
-            'jobTitle': 'Title 2',
-            'year': '2021',
-            'jobDesc': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu sapien and lorem fermentum hendrerit quis mattis arcu. Nulla eget efficitur ex. Proin hendrerit ligula quis vehicula interdum.'
-        }
+            'year': ' Jun 2021 • 9 mos',
+            'jobTitle': 'Full Stack Engineer - Data Engineer',
+            'year': 'Mar 2021 – Jun 2021 • 4 mos',
+            'jobDesc': 'Use mathematical and statistical technics over data in order to get the most important features and create ML models that generate predictions as well as valuable insights. Then incorporate these models and analysis in an endpoint for easy access. Using technologies such as Python and Flask.'
+        },
+        {
+            'jobTitle': 'Full Stack Engineer - Jiit Technolohies',
+            'year': 'Oct 2020 – Jun 2021 • 9 mos',
+            'jobDesc': 'Developing a platform for COVID tracking, a Marketplace site and a platform that can organize its inventory, human resources, shipments, income and expenses, that uses AI/ML. Using technologies such as Angular, Ionic, Typescript, Cordova, SQL and Flask.'
+        },
     ],
-    'skill': ['Skill 1', 'Skill 2', 'Skill 3']
+    'skill': [
+        'Javascript / Typescript',
+        'Angular',
+        'Ionic',
+        'Python',
+        'React',
+        'SQL',
+        'R',
+        'Flask',
+        'Data Science',
+        ]
 }
 
 projects = [
