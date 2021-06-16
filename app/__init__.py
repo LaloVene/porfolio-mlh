@@ -8,7 +8,7 @@ import smtplib
 
 load_dotenv()
 app = Flask(__name__)
- 
+
 app.secret_key = 'development key'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -38,6 +38,8 @@ aboutInfo = {
         'Learning',
         'Dancing',
         'Running',
+        'Guitar',
+        'Piano',
         ],
     'experience': [
         {
@@ -58,32 +60,66 @@ aboutInfo = {
         },
     ],
     'skill': [
-        'Javascript / Typescript',
-        'Angular',
-        'Ionic',
-        'Python',
-        'React',
-        'SQL',
-        'R',
-        'Flask',
-        'Data Science',
+        {
+            'name': 'Javascript',
+            'img': './static/img/skills/js.png',
+        },
+        {
+            'name': 'Typescript',
+            'img': './static/img/skills/ts.png',
+        },
+        {
+            'name': 'Angular',
+            'img': './static/img/skills/angular.png',
+        },
+        {
+            'name': 'Ionic',
+            'img': './static/img/skills/ionic.png',
+        },
+        {
+            'name': 'Python',
+            'img': './static/img/skills/python.png',
+        },
+        {
+            'name': 'React',
+            'img': './static/img/skills/react.png',
+        },
+        {
+            'name': 'SQL',
+            'img': './static/img/skills/sql.png',
+        },
+        {
+            'name': 'R',
+            'img': './static/img/skills/r.png',
+        },
+        {
+            'name': 'Flask',
+            'img': './static/img/skills/flask.png',
+        },
         ]
 }
 
 projects = [
     {
-        'title': 'Flask Web App',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu sapien and lorem fermentum hendrerit quis mattis arcu. Nulla eget efficitur ex. Proin hendrerit ligula quis vehicula interdum.',
-        'date': '06/09/2021',
+        'title': 'Flask Portfolio',
+        'description': 'Created froms scratch a portfolio using Flask, SQL and Javascript. At the same time learned Github best practices using Issues and Pull Requests.',
+        'date': 'June 2021',
         'img': './static/img/projects/web-dev.jpg',
-        'url': 'www.github.com',
+        'url': 'www.github.com/LaloVene/porfolio-mlh',
     },
     {
-        'title': 'Machine Learning Project For Data Prediction',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu sapien and lorem fermentum hendrerit quis mattis arcu. Nulla eget efficitur ex. Proin hendrerit ligula quis vehicula interdum.',
-        'date': '06/09/2021',
-        'img': './static/img/projects/machine-learning.jpg',
-        'url': 'www.github.com',
+        'title': 'Intelligent Room System',
+        'description': 'Won first place in the Campus Engineering Expo by developing a mobile app which can be used to control a room´s light, fan, doors and windows in combination with a NodeMCU board. The app also connects to an API to get the current weather and use it to predict if it is going to rain using a Deep Learning model. I used Ionic, Firebase, Keras, ChartJS and TensorFlowJS.',
+        'date': 'Dec 2020',
+        'img': './static/img/projects/smart-house.jpg',
+        'url': 'www.github.com/LaloVene/Intelligent-Room-Project',
+    },
+    {
+        'title': 'Machine Learning Model For Financial Fraud Detection',
+        'description': 'Got my Harvard’s Data Science certificate by making a ML model with R, where I predicted whether a bank transaction was fraud-ulent or not from a public dataset. I got a final accuracy of 0.99756 after cleaning the data and using a random forest ma-chine learning model.',
+        'date': 'Aug 2020',
+        'img': './static/img/projects/harvard.png',
+        'url': 'www.github.com/LaloVene/Machine-Learning-Model-For-Financial-Fraud-Detection',
     },
 ]
 

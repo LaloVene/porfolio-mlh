@@ -14,10 +14,12 @@
       <div class="project-card card">
           <img class="project-card-img" src="{{project.img}}" alt="{{project.name}}">
           <div>
-              <p class="project-card-title">{{project.title}}</p>
-              <p class="project-card-text">{{project.description}}</p>
-              <p class="project-card-date">{{project.date}}</p>
-              <div class="center">
+              <div class="text-area">
+                  <p class="project-card-title">{{project.title}}</p>
+                  <p class="project-card-text">{{project.description}}</p>
+                  <p class="project-card-date">{{project.date}}</p>
+              </div>
+              <div class="center project-button-area">
                   <button onclick=" window.open('http://{{project.url}}','_blank')" class="button project-card-button center">
                       <i class="fab fa-github"></i>
                       <label>View Project</label>
