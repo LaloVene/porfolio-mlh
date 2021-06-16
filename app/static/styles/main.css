@@ -85,8 +85,9 @@ body {
 
 .profile h3 {
     text-align: center;
-    font-weight: 600;
+    font-weight: 400;
     font-size: var(--intro);
+    letter-spacing: 0.8rem;
 }
 
 
@@ -117,35 +118,20 @@ body {
     background-color: hsl(215, 69%, 27%);
 }
 
-
-.banner {
-    padding: 20px 0px 50px 0px;
-    height: 150px;
-    background-color: #1d539f;
-}
-
-.banner .logo {
-    max-width:180px;
-    max-height:60px;
-    width: auto;
-    height: auto;
-}
-
-.banner .title {
-    color: white;
-    font-size: 50px;
-    font-weight: 700;
-}
-
 /* GENERAL */
 .section-title {
     font-size: 2rem;
     display: flex;
     align-items: center;
     padding: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 .section-title > i {
     margin-right: 1rem;
+}
+.subtitle {
+    font-weight: 400;
 }
 
 .button {
@@ -180,15 +166,71 @@ body {
         0 12px 80px rgba(0, 0, 0, 0.07);
 }
 
+.content {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
 /* ABOUT ME */
 
-.shortPara {
+.shortPara p {
     text-align: center;
     display: inline-block;
+}
+.shortPara {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 3rem;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 .info {
     padding: 4rem;
+}
+.timeline-card {
+    padding-bottom: 2rem;
+}
+.timeline-element {
+    border-left: 3px solid black;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+    margin-left: 1rem;
+}
+.timeline-element .title {
+    margin: 0;
+}
+.timeline-element .date {
+    font-size: 0.8rem;
+    margin: 0;
+}
+.timeline-element .desc {
+    /* margin: 0; */
+}
+.timeline-start {
+    position: absolute;
+    margin-left: 0.4rem;
+    border-radius: 100%;
+    width: 1.3rem;
+    height: 1.3rem;
+    background-color: var(--primary-color);
+    box-shadow: 0 0.3px 2.2px rgba(0, 0, 0, 0.02),
+        0 0.8px 5.3px rgba(0, 0, 0, 0.028),
+        0 1.5px 10px rgba(0, 0, 0, 0.035),
+        0 2.7px 17.9px rgba(0, 0, 0, 0.042),
+        0 5px 33.4px rgba(0, 0, 0, 0.05),
+        0 12px 80px rgba(0, 0, 0, 0.07);
+}
+.timeline-end {
+    background-color: grey;
+}
+
+/* INTERESTS */
+.interests {
+    margin-left: 3.2rem;
+}
+.interests li {
+    margin: 0.5rem 0;
 }
 
 /* PROJECTS */
