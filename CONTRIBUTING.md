@@ -7,6 +7,7 @@
  ```bash
  $ python -m venv python3-virtualenv
  $ source python3-virtualenv/bin/activate
+ $ python3-virtualenv\Scripts\activate (For Windows)
  ```
 
  Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all dependencies
@@ -24,7 +25,7 @@
  Start flask development server
  ```bash
  $ export FLASK_ENV=development 
- $ If you're on Windows, use set FLASK_ENV=development instead
+ $ set FLASK_ENV=development (For Windows)
  $ flask run
  ```
 
