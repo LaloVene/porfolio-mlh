@@ -16,8 +16,8 @@ db_init(app)
 
 headerInfo = {
     'img':'./static/img/coverimg.jpg',
-    'name': 'Fellow Name',
-    'intro': 'Short intro here'
+    'name': 'Eduardo Venegas',
+    'intro': 'CS Student'
 }
 
 aboutInfo = {

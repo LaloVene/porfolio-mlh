@@ -1,5 +1,11 @@
 p, h1, h2, h3, h4, h5, h6, button {
-    font-family: "Roboto", serif;
+    font-family: "Quicksand", serif;
+}
+:root {
+    --primary-color: #6E8ED4;
+    --name: 5rem;
+    --nameM: 4rem;
+    --intro: 2rem;
 }
 
 body {
@@ -7,7 +13,7 @@ body {
     background-size: cover;
     width: auto; 
     overflow-x: hidden;
-    font-family: "Roboto", serif;
+    font-family: "Quicksand", serif;
     margin: 0px;
 }
 
@@ -15,7 +21,7 @@ body {
     width: 100%;
     display: inline-block;
     background-color: #1C539F;
-    font-family: "Roboto", serif;
+    font-family: "Quicksand", serif;
     font-weight: 700 !important;
     padding-top: 10px;
 }
@@ -49,42 +55,38 @@ body {
     padding-right: 0px;
 }
 
+/* LANDING */
 .profile {
     text-align: center;
     margin-bottom: -5px;
-}
-.profile > img {
     width: 100%;
     height: 95vh;
-    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile img {
+    position: absolute;
+    opacity: 0.2;
+    max-width: 30rem;
+    margin-right: 2rem;
 }
 
 .profile h1 {
-    position: absolute;
     text-align: center;
-    align-content: center;
-    top: 35%;
-    width: 100%;
-    margin: 0 auto;
-    font-size: 50px;
-    font-weight: 700;
-    color: rgb(255, 255, 255);
+    font-size: var(--name);
+    font-weight: 100;
+}
+@media (max-width: 600px) {
+    .profile h1 {
+        font-size: var(--nameM);
+    }
 }
 
 .profile h3 {
-    font-size: 40px;
-    position: absolute;
     text-align: center;
-    align-content: center;
-    top: 45%;
-    width: 100%;
-    margin: 0 auto;
-    color: rgb(255, 255, 255);
-
-}
-
-.profile img {
-    filter: brightness(50%);
+    font-weight: 600;
+    font-size: var(--intro);
 }
 
 
