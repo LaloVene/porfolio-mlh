@@ -18,7 +18,7 @@
           <div>
               <p class="project-card-title">{{post.title}}</p>
               <p class="project-card-text">{{post.content}}</p>
-              <p class="project-card-date">{{post.date_created}}</p>
+              <p class="project-card-date">{{post.date_created.strftime('%m/%d/%Y')}}</p>
               <div class="center">
                   <button onclick=" window.open('blog/{{post.id}}')" class="button project-card-button center">
                       <i class="fas fa-comment-dots"></i>
