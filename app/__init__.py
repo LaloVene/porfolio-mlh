@@ -210,3 +210,8 @@ def get_post(id):
 def get_posts():
     posts = Blog.query.order_by(Blog.date_created).all()
     return posts
+
+# Health: For testing
+@app.route('/health')
+def check_health():
+    return 'Correct', 200
