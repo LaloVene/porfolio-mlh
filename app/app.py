@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, Response, render_template, send_file, send_from_directory, jsonify
+from flask import Flask, request, Response, render_template, send_file, send_from_directory, jsonify, redirect, url_for
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 # from db import db_init, db
@@ -235,12 +235,13 @@ def register():
                 (username, generate_password_hash(password))
             )
             db.commit()
-            return f"User {username} created successfully"
+            message = f"User {username} created successfully"
+            return render_template('login.html', url=os.getenv("URL"), headerInfo=headerInfo, message=message)
         else:
-            return error, 418
+            return render_template('login.html', url=os.getenv("URL"), headerInfo=headerInfo, message=error), 418
 
     ## TODO: Return a restister page
-    return "Register Page not yet implemented", 501
+    return render_template('register.html', url=os.getenv("URL"), headerInfo=headerInfo)
 
 @app.route('/login', methods=('GET', 'POST'))
 def login():
@@ -259,12 +260,13 @@ def login():
             error = 'Incorrect password.'
 
         if error is None:
+            return redirect(url_for('portfolio'))
             return "Login Successful", 200 
         else:
-            return error, 418
+            return render_template('login.html', url=os.getenv("URL"), headerInfo=headerInfo, message=error), 418
     
     ## TODO: Return a login page
-    return "Login Page not yet implemented", 501
+    return render_template('login.html', url=os.getenv("URL"), headerInfo=headerInfo)
 
 def get_posts():
     posts = Blog.query.order_by(Blog.date_created).all()
