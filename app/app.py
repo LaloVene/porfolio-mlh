@@ -255,7 +255,7 @@ def register():
         if error is None:
             new_user = UserModel(username, generate_password_hash(password))
             db.session.add(new_user)
-            db.commit()
+            db.session.commit()
             message = f"User {username} created successfully"
             return render_template('login.html', url=os.getenv("URL"), headerInfo=headerInfo, message=message)
         else:
@@ -274,7 +274,7 @@ def login():
 
         if user is None:
             error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
+        elif not check_password_hash(user.password, password):
             error = 'Incorrect password.'
 
         if error is None:
