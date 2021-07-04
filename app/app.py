@@ -3,21 +3,47 @@ from flask import Flask, request, Response, render_template, send_file, send_fro
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 # from db import db_init, db
-import db
+# import db
 # from models import Blog
 import smtplib
 from werkzeug.security import check_password_hash, generate_password_hash
-from db import get_db
+# from db import get_db
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 load_dotenv()
 app = Flask(__name__)
 
 app.secret_key = 'development key'
 
-app.config['DATABASE'] = os.path.join(os.getcwd(), 'flask.sqlite')
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-db.init_app(app)
-# db_init(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://{user}:{passwd}@{host}:{port}/{table}'.format(
+    user=os.getenv('POSTGRES_USER'),
+    passwd=os.getenv('POSTGRES_PASSWORD'),
+    host=os.getenv('POSTGRES_HOST'),
+    port=5432,
+    table=os.getenv('POSTGRES_DB'))
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
+
+class UserModel(db.Model):
+    __tablename__ = 'users'
+
+    username = db.Column(db.String(), primary_key=True)
+    password = db.Column(db.String())
+
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+    def __repr__(self):
+        return f"<User {self.username}>"
+
+# app.config['DATABASE'] = os.path.join(os.getcwd(), 'flask.sqlite')
+# db.init_app(app)
 
 headerInfo = {
     'img':'./static/img/coverimg.jpg',
@@ -217,23 +243,18 @@ def register():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        db = get_db()
         error = None
 
         if not username:
             error = 'Username is required.'
         elif not password:
             error = 'Password is required.'
-        elif db.execute(
-            'SELECT id FROM user WHERE username = ?', (username,)
-        ).fetchone() is not None:
+        elif UserModel.query.filter_by(username=username).first() is not None:
             error = f"User {username} is already registered."
 
         if error is None:
-            db.execute(
-                'INSERT INTO user (username, password) VALUES (?, ?)',
-                (username, generate_password_hash(password))
-            )
+            new_user = UserModel(username, generate_password_hash(password))
+            db.session.add(new_user)
             db.commit()
             message = f"User {username} created successfully"
             return render_template('login.html', url=os.getenv("URL"), headerInfo=headerInfo, message=message)
@@ -248,11 +269,8 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        db = get_db()
         error = None
-        user = db.execute(
-            'SELECT * FROM user WHERE username = ?', (username,)
-        ).fetchone()
+        user = UserModel.query.filter_by(username=username).first()
 
         if user is None:
             error = 'Incorrect username.'
@@ -261,7 +279,6 @@ def login():
 
         if error is None:
             return redirect(url_for('portfolio'))
-            return "Login Successful", 200 
         else:
             return render_template('login.html', url=os.getenv("URL"), headerInfo=headerInfo, message=error), 418
     
