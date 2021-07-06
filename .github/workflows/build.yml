@@ -14,11 +14,11 @@ jobs:
   build-image:
     name: Build Docker images
     runs-on: ubuntu-latest
-    
+
     steps:  # You may pin to the exact commit or the version.
       # uses: docker/build-push-action@1bc1040caef9e604eb543693ba89b5bf4fc80935
-      uses: docker/build-push-action@v2.6.1
-      with:
-        # Build's context is the set of files located in the specified PATH or URL
-        context: app # optional
+      - uses: docker/build-push-action@v2.6.1
+        with:
+          # Build's context is the set of files located in the specified PATH or URL
+          context: app # optional
       
