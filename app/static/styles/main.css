@@ -89,6 +89,11 @@ body {
     font-size: var(--intro);
     letter-spacing: 0.8rem;
 }
+.profile i {
+    position: absolute;
+    bottom: 3rem;
+    font-size: 2rem;
+}
 
 
 .navbar {

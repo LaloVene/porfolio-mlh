@@ -12,6 +12,7 @@ from flask import (
 )
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
+from datetime import datetime
 
 # from db import db_init, db
 # import db
@@ -56,6 +57,19 @@ class UserModel(db.Model):
 
     def __repr__(self):
         return f"<User {self.username}>"
+
+
+class PostModel(db.Model):
+    __tablename__ = "post"
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    like_count = db.Column(db.Integer, default=0)
+    img = db.Column(db.Text, nullable=False)
+    img_name = db.Column(db.Text, nullable=False)
+    img_mimetype = db.Column(db.Text, nullable=False)
 
 
 # app.config['DATABASE'] = os.path.join(os.getcwd(), 'flask.sqlite')
@@ -196,12 +210,12 @@ def portfolio():
 @app.route("/blog")
 def blogPage():
     blog_posts = get_posts()
-    path = "app/static/img/blog/"
+    path = "static/img/blog/"
     for post in blog_posts:
         post.content = post.content[:255] + "..."
         with open(path + post.img_name, "wb") as binary_file:
             # Write bytes to file
-            binary_file.write(post.img)
+            binary_file.write(post.img.encode("ascii"))
     return render_template(
         "blog.html", url=os.getenv("URL"), headerInfo=headerInfo, blog_posts=blog_posts
     )
@@ -252,7 +266,7 @@ def upload():
     if not filename or not mimetype:
         return "Not enough data!", 400
 
-    post = Blog(
+    post = PostModel(
         title=title,
         content=content,
         img=pic.read(),
@@ -267,7 +281,7 @@ def upload():
 
 @app.route("/blog/<int:id>")
 def get_post(id):
-    post = Blog.query.filter_by(id=id).first()
+    post = PostModel.query.filter_by(id=id).first()
     if not post:
         return "Post Not Found!", 404
 
@@ -347,7 +361,7 @@ def login():
 
 
 def get_posts():
-    posts = Blog.query.order_by(Blog.date_created).all()
+    posts = PostModel.query.order_by(PostModel.date_created).all()
     return posts
 
 
