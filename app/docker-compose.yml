@@ -2,6 +2,8 @@ version: "3"
 services:
   web:
     build: .
+    ports:
+      - "5000:80"
     restart: always
     env_file:
       - .env
@@ -16,7 +18,7 @@ services:
     env_file:
       - .env
     volumes:
-      - mydatabase:/var/lib/postgres/data
+      - mydatabase:/var/lib/postgresql/data
 
   nginx:
     image: jonasal/nginx-certbot:latest
