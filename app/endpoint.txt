@@ -2,7 +2,7 @@
 about
 contact
 portfolio
-blog
+bloga
 new-blog
 health
 register
