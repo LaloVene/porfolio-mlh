@@ -25,10 +25,12 @@ services:
       - 80:80
       - 443:443
     volumes:
+      - mydatabase:/var/lib/postgres/data
       - nginx_secrets:/etc/letsencrypt
       - ./user_conf.d:/etc/nginx/user_conf.d
     depends_on:
       - web
 
 volumes:
+  mydatabase:
   nginx_secrets:
