@@ -38,6 +38,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Test endpoints
-        run: |
-          cd app
-          ./prod-test.sh
+        run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && cd app && source prod-test.sh'
