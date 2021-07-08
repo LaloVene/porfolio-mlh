@@ -41,4 +41,6 @@ jobs:
         run: ls -a
 
       - name: Test endpoints
-        run: sh app/prod-test.sh
+        run: |
+          cd app
+          sh prod-test.sh
