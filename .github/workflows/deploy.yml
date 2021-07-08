@@ -37,9 +37,6 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
-      - name: Print files
-        run: ls -a
-
       - name: Test endpoints
         run: |
           cd app
