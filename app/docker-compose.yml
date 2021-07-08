@@ -15,6 +15,8 @@ services:
     restart: always
     env_file:
       - .env
+    volumes:
+      - mydatabase:/var/lib/postgres/data
 
   nginx:
     image: jonasal/nginx-certbot:latest
@@ -25,7 +27,6 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - mydatabase:/var/lib/postgres/data
       - nginx_secrets:/etc/letsencrypt
       - ./user_conf.d:/etc/nginx/user_conf.d
     depends_on:
