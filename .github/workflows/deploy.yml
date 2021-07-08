@@ -40,4 +40,4 @@ jobs:
       - name: Test endpoints
         run: |
           cd app
-          source prod-test.sh
+          ./prod-test.sh
