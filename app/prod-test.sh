@@ -1,5 +1,6 @@
 #!/bin/sh
 
+TERM=xterm
 server="https://lalovene.duckdns.org/"
 while read endpoint;
 do
