@@ -33,3 +33,12 @@ jobs:
 
       - name: Print container status
         run: ssh my-vm 'cd ${{ secrets.PROJECT_ROOT }} && cd app && docker-compose ps'
+
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Print files
+        run: ls -a
+
+      - name: Test endpoints
+        run: sh ./app/prod-test.sh
