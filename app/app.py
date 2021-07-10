@@ -67,7 +67,7 @@ class PostModel(db.Model):
 
 
 # Load JSON data
-with open("data.json") as json_file:
+with open("page_data.json") as json_file:
     data = json.load(json_file)
     global headerInfo, aboutInfo
     headerInfo = data["headerInfo"]
