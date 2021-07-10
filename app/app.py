@@ -90,19 +90,15 @@ def index():
 @app.route("/about")
 def aboutMe():
     return render_template(
-        "about.html",
-        headerInfo=headerInfo,
-        aboutInfo=aboutInfo
-    )
+        "about.html", headerInfo=headerInfo, aboutInfo=aboutInfo
+    )  # noqa: E501
 
 
 @app.route("/portfolio")
 def portfolio():
     return render_template(
-        "portfolio.html",
-        headerInfo=headerInfo,
-        projects=projects
-    )
+        "portfolio.html", headerInfo=headerInfo, projects=projects
+    )  # noqa: E501
 
 
 @app.route("/blog")
@@ -118,17 +114,15 @@ def blogPage():
         "blog.html",
         url=os.getenv("URL"),
         headerInfo=headerInfo,
-        blog_posts=blog_posts
+        blog_posts=blog_posts,  # noqa: E501
     )
 
 
 @app.route("/contact")
 def contact():
     return render_template(
-        "contact.html",
-        url=os.getenv("URL"),
-        headerInfo=headerInfo
-    )
+        "contact.html", url=os.getenv("URL"), headerInfo=headerInfo
+    )  # noqa: E501
 
 
 @app.route("/sendMsg", methods=["POST"])
@@ -149,9 +143,8 @@ def sendMsg():
         "testmlh.pod.333@gmail.com", "testmlh.pod.333@gmail.com", message2Send
     )
     return render_template(
-        "success.html",
-        url=os.getenv("URL"),
-        headerInfo=headerInfo)
+        "success.html", url=os.getenv("URL"), headerInfo=headerInfo
+    )  # noqa: E501
 
 
 # Creating new blog posts
@@ -161,7 +154,7 @@ def new_blog():
         "new_blog.html",
         title="New Blog",
         url=os.getenv("URL"),
-        projects=projects
+        projects=projects,  # noqa: E501
     )
 
 
@@ -190,10 +183,8 @@ def upload():
     db.session.commit()
 
     return render_template(
-        "success.html",
-        url=os.getenv("URL"),
-        headerInfo=headerInfo
-    )
+        "success.html", url=os.getenv("URL"), headerInfo=headerInfo
+    )  # noqa: E501
 
 
 @app.route("/blog/<int:id>")
@@ -245,10 +236,8 @@ def register():
 
     # TODO: Return a restister page
     return render_template(
-        "register.html",
-        url=os.getenv("URL"),
-        headerInfo=headerInfo
-    )
+        "register.html", url=os.getenv("URL"), headerInfo=headerInfo
+    )  # noqa: E501
 
 
 @app.route("/login", methods=("GET", "POST"))
@@ -279,10 +268,8 @@ def login():
 
     # TODO: Return a login page
     return render_template(
-        "login.html",
-        url=os.getenv("URL"),
-        headerInfo=headerInfo
-    )
+        "login.html", url=os.getenv("URL"), headerInfo=headerInfo
+    )  # noqa: E501
 
 
 def get_posts():
