@@ -89,12 +89,20 @@ def index():
 
 @app.route("/about")
 def aboutMe():
-    return render_template("about.html", headerInfo=headerInfo, aboutInfo=aboutInfo)
+    return render_template(
+        "about.html",
+        headerInfo=headerInfo,
+        aboutInfo=aboutInfo
+    )
 
 
 @app.route("/portfolio")
 def portfolio():
-    return render_template("portfolio.html", headerInfo=headerInfo, projects=projects)
+    return render_template(
+        "portfolio.html",
+        headerInfo=headerInfo,
+        projects=projects
+    )
 
 
 @app.route("/blog")
@@ -107,13 +115,20 @@ def blogPage():
             # Write bytes to file
             binary_file.write(post.img.encode("ascii"))
     return render_template(
-        "blog.html", url=os.getenv("URL"), headerInfo=headerInfo, blog_posts=blog_posts
+        "blog.html",
+        url=os.getenv("URL"),
+        headerInfo=headerInfo,
+        blog_posts=blog_posts
     )
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html", url=os.getenv("URL"), headerInfo=headerInfo)
+    return render_template(
+        "contact.html",
+        url=os.getenv("URL"),
+        headerInfo=headerInfo
+    )
 
 
 @app.route("/sendMsg", methods=["POST"])
@@ -124,21 +139,29 @@ def sendMsg():
     if not name or not email or not message:
         return "Not enough data!", 400
 
-    message2Send = "\nName: " + name + " \nEmail: " + email + "\nMessage: " + message
+    message2Send = "\nName: " + name
+    message2Send = message2Send + " \nEmail: " + email
+    message2Send = message2Send + "\nMessage: " + message
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
     server.login("testmlh.pod.333@gmail.com", "iampod333")
     server.sendmail(
         "testmlh.pod.333@gmail.com", "testmlh.pod.333@gmail.com", message2Send
     )
-    return render_template("success.html", url=os.getenv("URL"), headerInfo=headerInfo)
+    return render_template(
+        "success.html",
+        url=os.getenv("URL"),
+        headerInfo=headerInfo)
 
 
 # Creating new blog posts
 @app.route("/new-blog")
 def new_blog():
     return render_template(
-        "new_blog.html", title="New Blog", url=os.getenv("URL"), projects=projects
+        "new_blog.html",
+        title="New Blog",
+        url=os.getenv("URL"),
+        projects=projects
     )
 
 
@@ -166,7 +189,11 @@ def upload():
     db.session.add(post)
     db.session.commit()
 
-    return render_template("success.html", url=os.getenv("URL"), headerInfo=headerInfo)
+    return render_template(
+        "success.html",
+        url=os.getenv("URL"),
+        headerInfo=headerInfo
+    )
 
 
 @app.route("/blog/<int:id>")
@@ -216,8 +243,12 @@ def register():
                 418,
             )
 
-    ## TODO: Return a restister page
-    return render_template("register.html", url=os.getenv("URL"), headerInfo=headerInfo)
+    # TODO: Return a restister page
+    return render_template(
+        "register.html",
+        url=os.getenv("URL"),
+        headerInfo=headerInfo
+    )
 
 
 @app.route("/login", methods=("GET", "POST"))
@@ -246,8 +277,12 @@ def login():
                 418,
             )
 
-    ## TODO: Return a login page
-    return render_template("login.html", url=os.getenv("URL"), headerInfo=headerInfo)
+    # TODO: Return a login page
+    return render_template(
+        "login.html",
+        url=os.getenv("URL"),
+        headerInfo=headerInfo
+    )
 
 
 def get_posts():
