@@ -39,6 +39,7 @@ jobs:
 
       - name: Test endpoints
         run: |
+          sleep 5
           cd app
           source prod-test.sh
 
