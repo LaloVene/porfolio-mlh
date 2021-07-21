@@ -280,4 +280,5 @@ def get_posts():
 # Health: For testing
 @app.route("/health")
 def check_health():
-    return "Correct", 200
+    has_lalo = UserModel.query.filter_by(username="lalo").first()
+    return f"Works, has_lalo: {'yes' if has_lalo is not None else 'no'} users", 200
